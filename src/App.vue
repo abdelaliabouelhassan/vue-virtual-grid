@@ -76,6 +76,7 @@ export default {
       // return approxHeight + extraHeight;
 
       //approche 2
+      
  
           //create dev
           const div = document.createElement("div");
