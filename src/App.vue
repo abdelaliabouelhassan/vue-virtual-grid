@@ -57,19 +57,49 @@ export default {
       
     },
     calculateHeight(text){
+     
       const gap = 10; // gap between cards in pixels
       const width = window.innerWidth;
       const columnWidth = width / this.columns - gap;
-      const lineHeight = 40; // Adjust line height based on your text font and size
-
       const extraHeight = 100; // Additional height if required
 
-      const textLength = text.length;
-      const lines = Math.ceil(textLength / (columnWidth / 16)); // Assuming 2rem font size
+       //approche 1
+      // const lineHeight = 40; // Adjust line height based on your text font and size
 
-      const approxHeight = lines * lineHeight;
+     
 
-      return approxHeight + extraHeight;
+      // const textLength = text.length;
+      // const lines = Math.ceil(textLength / (columnWidth / 16)); // Assuming 2rem font size
+
+      // const approxHeight = lines * lineHeight;
+
+      // return approxHeight + extraHeight;
+
+      //approche 2
+ 
+          //create dev
+          const div = document.createElement("div");
+          div.style.width = columnWidth + "px";
+          div.style.position = "absolute";
+          div.style.top = "0";
+          div.style.left = "0";
+          div.style.visibility = "hidden";
+          div.style.fontSize = "2rem";
+          div.style.boxSizing = "border-box";
+          div.style.wordWrap = "break-word";
+          div.style.whiteSpace = "normal";
+          div.style.fontWeight = "400";
+          div.style.fontStyle = "normal";
+          div.style.padding = "10px";
+          document.body.appendChild(div);
+          div.innerHTML = text;
+          const height = div.clientHeight;
+          document.body.removeChild(div);
+          
+          
+          return height + extraHeight;
+
+      
     },
     getItems(item) {
       return {
